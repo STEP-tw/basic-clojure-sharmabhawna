@@ -19,3 +19,9 @@
            (is (= 2 (harishchandra 2))))
   (testing "falsy values"
            (is (nil? (harishchandra false)))))
+
+(deftest yudishtira-test
+  (testing "truthy values"
+           (is (= 2 (yudishtira 2))))
+  (testing "falsy values"
+           (is (= :ashwathama (yudishtira false)))))
