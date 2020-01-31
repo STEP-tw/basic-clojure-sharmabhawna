@@ -25,3 +25,9 @@
            (is (= 2 (yudishtira 2))))
   (testing "falsy values"
            (is (= :ashwathama (yudishtira false)))))
+
+(deftest first-duplication
+  (testing "non-empty collection"
+           (is (= [2 2 4 5] (duplicate-first [2 4 5]))))
+  (testing "empty collection"
+           (is (nil? (duplicate-first [])))))
