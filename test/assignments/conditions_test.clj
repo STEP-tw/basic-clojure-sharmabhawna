@@ -42,3 +42,14 @@
   (testing "neither any argument is 5 nor first argument is greater than second"
            (is (= :universe (five-point-someone 3 6))))
   )
+
+(deftest conditions-apply-test
+  (testing "collection has 1 and 3 in order"
+           (is (= :wonder-woman (conditions-apply [2 1 4 3]))))
+  (testing "collection has :a, :b and :c in order"
+           (is (= :durga (conditions-apply [:a :d :b :e :c]))))
+  (testing "collection has [2 3] and [4 5] in order"
+           (is (= :cleopatra (conditions-apply [[2 3] 1 [8] 6 [4 5]]))))
+  (testing "collection has no pattern mentioned above"
+           (is (= :tantan (conditions-apply [2 4 3 1]))))
+  )
