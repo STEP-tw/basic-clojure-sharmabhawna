@@ -129,5 +129,8 @@
   [1 2 3] -> (4 3 2 0 2 3 4)"
   {:level :easy
    :use '[as-> reverse]
-   :implemented? false}
-  [coll])
+   :implemented? true}
+  [coll] (as-> coll col
+               (if (every? number? col) (map inc col) col)
+               (concat (reverse col) [0] col)
+               ))
