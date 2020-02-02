@@ -64,3 +64,12 @@
   (testing "repeatition and truncation both are true"
            (is (= [1 2 3 1 2] (repeat-and-truncate [1 2 3] true true 5))))
   )
+
+(deftest order-in-words-test
+  (testing "x > y and y > z"
+           (is (= [:x-greater-than-y :y-greater-than-z] (order-in-words 4 3 2))))
+  (testing "x > y and z > x"
+           (is (= [:x-greater-than-y :z-greater-than-x] (order-in-words 4 3 5))))
+  (testing "z > x"
+           (is (= [:z-greater-than-x] (order-in-words 2 3 4))))
+  )
