@@ -53,3 +53,14 @@
   (testing "collection has no pattern mentioned above"
            (is (= :tantan (conditions-apply [2 4 3 1]))))
   )
+
+(deftest repeatition-and-truncation
+  (testing "repeatition and truncation both are false"
+           (is (= [1 2 3] (repeat-and-truncate [1 2 3] false false 2))))
+  (testing "repeatition is false and truncation is true"
+           (is (= [1 2] (repeat-and-truncate [1 2 3] false true 2))))
+  (testing "repeatition is true and truncation is false"
+           (is (= [1 2 3 1 2 3] (repeat-and-truncate [1 2 3] true false 5))))
+  (testing "repeatition and truncation both are true"
+           (is (= [1 2 3 1 2] (repeat-and-truncate [1 2 3] true true 5))))
+  )
