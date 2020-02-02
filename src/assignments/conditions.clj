@@ -5,14 +5,16 @@
   {:level        :easy
    :use          '[when-not zero?]
    :implemented? true}
-  [x y] (when-not (zero? y) (/ x y)))
+  [x y]
+  (when-not (zero? y) (/ x y)))
 
 (defn informative-divide
   "Returns the result of x/y unless y is 0. Returns :infinite when y is 0"
   {:level        :easy
    :use          '[if-not zero?]
    :implemented? true}
-  [x y] (if-not (zero? y) (/ x y) :infinite))
+  [x y]
+  (if-not (zero? y) (/ x y) :infinite))
 
 (defn harishchandra
   "Only returns truthy values as themselves.
@@ -20,7 +22,8 @@
   {:level        :easy
    :use          '[when-let]
    :implemented? true}
-  [x] (when-let [r x] r))
+  [x]
+  (when-let [r x] r))
 
 (defn yudishtira
   "Only returns truthy values as themselves.
@@ -28,7 +31,8 @@
   {:level        :easy
    :use          '[if-let]
    :implemented? true}
-  [x] (if-let [r x] r :ashwathama))
+  [x]
+  (if-let [r x] r :ashwathama))
 
 (defn duplicate-first
   "Returns coll with the first element duplicated.
@@ -37,7 +41,8 @@
    :use          '[when-first concat]
    :alternates   '[empty? seq? conj into]
    :implemented? true?}
-  [coll] (when-first [a coll] (concat [a] coll)))
+  [coll]
+  (when-first [a coll] (concat [a] coll)))
 
 (defn five-point-someone
   "Returns :chetan-bhagat if y is 5.
@@ -47,13 +52,12 @@
   {:level        :easy
    :use          '[cond]
    :implemented? true}
-  [x y] (cond
-          (= x 5) :satan-bhagat
-          (= y 5) :chetan-bhagat
-          (> x y) :greece
-          :else :universe
-    )
-  )
+  [x y]
+  (cond
+    (= x 5) :satan-bhagat
+    (= y 5) :chetan-bhagat
+    (> x y) :greece
+    :else   :universe))
 
 (defn conditions-apply
   "Given a collection of any length, returns:
@@ -65,12 +69,12 @@
    :use          '[condp filter]
    :alternates   '[if cond]
    :implemented? true}
-  [coll] (condp (comp not empty? filter) coll
-           #{1 3} :wonder-woman
-           #{:a :b :c} :durga
-           #{[2 3] [4 5]} :cleopatra
-           :tantan
-           ))
+  [coll]
+  (condp (comp not empty? filter) coll
+    #{1 3}         :wonder-woman
+    #{:a :b :c}    :durga
+    #{[2 3] [4 5]} :cleopatra
+    :tantan))
 
 (defn repeat-and-truncate
   "Given coll and options to repeat and truncate
@@ -80,10 +84,10 @@
   {:level        :medium
    :use          '[cond->> concat take]
    :implemented? true}
-  [coll rep? truncate? n] (cond->> coll
-                            (true? rep?) ((comp (partial apply concat) (partial repeat 2)))
-                            (true? truncate?) (take n)
-                            ))
+  [coll rep? truncate? n]
+  (cond->> coll
+    (true? rep?)      ((comp (partial apply concat) (partial repeat 2)))
+    (true? truncate?) (take n)))
 
 (defn order-in-words
   "Given x, y and z, returns a vector consisting of
@@ -94,11 +98,11 @@
   {:level        :easy
    :use          '[cond-> conj]
    :implemented? true}
-  [x y z] (cond-> []
-            (> x y) (conj :x-greater-than-y)
-            (> y z) (conj :y-greater-than-z)
-            (> z x) (conj :z-greater-than-x)
-            ))
+  [x y z]
+  (cond-> []
+    (> x y) (conj :x-greater-than-y)
+    (> y z) (conj :y-greater-than-z)
+    (> z x) (conj :z-greater-than-x)))
 
 (defn zero-aliases
   "Given a zero-like value(0,[],(),#{},{}) should
@@ -113,24 +117,24 @@
   {:level        :easy
    :use          '[case]
    :implemented? true}
-  [zero-like-value] (case zero-like-value
-                      0 :zero
-                      [] :empty
-                      #{} :empty-set
-                      {} :empty-map
-                      "" :empty-string
-                      :not-zero
-                      ))
+  [zero-like-value]
+  (case zero-like-value
+    0   :zero
+    []  :empty
+    #{} :empty-set
+    {}  :empty-map
+    ""  :empty-string
+    :not-zero))
 
 (defn zero-separated-palindrome
   "Given a sequence of numbers, increment the list
   and prepend a 0 to the incremented list concatenated
   with the reverse of the incremented list
   [1 2 3] -> (4 3 2 0 2 3 4)"
-  {:level :easy
-   :use '[as-> reverse]
+  {:level        :easy
+   :use          '[as-> reverse]
    :implemented? true}
-  [coll] (as-> coll col
-               (if (every? number? col) (map inc col) col)
-               (concat (reverse col) [0] col)
-               ))
+  [coll]
+  (as-> coll col
+        (if (every? number? col) (map inc col) col)
+        (concat (reverse col) [0] col)))
