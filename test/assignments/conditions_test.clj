@@ -73,3 +73,19 @@
   (testing "z > x"
            (is (= [:z-greater-than-x] (order-in-words 2 3 4))))
   )
+
+(deftest zero-aliases-test
+  (testing "zero 0"
+           (is (= :zero (zero-aliases 0))))
+  (testing "empty vector"
+           (is (= :empty (zero-aliases []))))
+  (testing "empty list"
+           (is (= :empty (zero-aliases '()))))
+  (testing "empty set"
+           (is (= :empty-set (zero-aliases #{}))))
+  (testing "empty map"
+           (is (= :empty-map (zero-aliases {}))))
+  (testing "empty string"
+           (is (= :empty-string (zero-aliases ""))))
+  (testing "not empty"
+           (is (= :not-zero (zero-aliases 1)))))
