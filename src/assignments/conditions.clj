@@ -23,7 +23,7 @@
    :use          '[when-let]
    :implemented? true}
   [x]
-  (when-let [r x] r))
+  (when-let [x x] x))
 
 (defn yudishtira
   "Only returns truthy values as themselves.
@@ -32,7 +32,7 @@
    :use          '[if-let]
    :implemented? true}
   [x]
-  (if-let [r x] r :ashwathama))
+  (if-let [x x] x :ashwathama))
 
 (defn duplicate-first
   "Returns coll with the first element duplicated.
@@ -86,7 +86,7 @@
    :implemented? true}
   [coll rep? truncate? n]
   (cond->> coll
-    (true? rep?)      ((comp (partial apply concat) (partial repeat 2)))
+    (true? rep?)      (concat coll)
     (true? truncate?) (take n)))
 
 (defn order-in-words
