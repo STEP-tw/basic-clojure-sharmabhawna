@@ -13,3 +13,8 @@
 (defmacro print-and-do [& forms]
   (let [forms-with-println (mapcat insert-println-if-implemented forms)]
     (list* 'do forms-with-println)))
+
+(defn only-single-occurance? [sub-seq sup-seq]
+  (->> sup-seq
+       (filter (set sub-seq))
+       (= sub-seq)))

@@ -1,4 +1,6 @@
-(ns assignments.conditions)
+(ns assignments.conditions
+  (:require
+    [assignments.util :as u]))
 
 (defn safe-divide
   "Returns the result of x/y unless y is 0. Returns nil when y is 0"
@@ -70,10 +72,10 @@
    :alternates   '[if cond]
    :implemented? true}
   [coll]
-  (condp (comp not empty? filter) coll
-    #{1 3}         :wonder-woman
-    #{:a :b :c}    :durga
-    #{[2 3] [4 5]} :cleopatra
+  (condp u/only-single-occurance? coll
+    [1 3]         :wonder-woman
+    [:a :b :c]    :durga
+    [[2 3] [4 5]] :cleopatra
     :tantan))
 
 (defn repeat-and-truncate
