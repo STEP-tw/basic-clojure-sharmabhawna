@@ -26,3 +26,13 @@
            (is (= '(\e \r \u \j \o \l \c) (reverse' "clojure"))))
   (testing "with non-seqable"
            (is (nil? (reverse' true)))))
+
+(deftest every?-test
+  (testing "with empty list"
+           (is (true? (every?' odd? []))))
+  (testing "all elements satisfy the predicate"
+           (is (true? (every?' odd? [1 3 5]))))
+  (testing "at least one element does not satisfy the predicate"
+           (is (false? (every?' odd? [1 2 3]))))
+  (testing "no element satisfy the predicate"
+           (is (false? (every?' odd? [2 4 6])))))
