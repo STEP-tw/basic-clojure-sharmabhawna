@@ -36,3 +36,13 @@
            (is (false? (every?' odd? [1 2 3]))))
   (testing "no element satisfy the predicate"
            (is (false? (every?' odd? [2 4 6])))))
+
+(deftest some?-test
+  (testing "with empty list"
+    (is (false? (some?' odd? []))))
+  (testing "all elements satisfy the predicate"
+    (is (true? (some?' odd? [1 3 5]))))
+  (testing "at least one element satisfies the predicate"
+    (is (true? (some?' odd? [2 3 4]))))
+  (testing "no element satisfy the predicate"
+    (is (false? (some?' odd? [2 4 6])))))
