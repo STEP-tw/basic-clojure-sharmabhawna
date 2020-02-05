@@ -72,3 +72,13 @@
     (is (= [] (transpose [[] []]))))
   (testing "with not-empty sequence"
     (is (= [[1 2 3] [4 5 6]] (transpose [[1 4] [2 5] [3 6]])))))
+
+(deftest difference-test
+  (testing "with empty collections"
+    (is (= [] (difference [] []))))
+  (testing "second collection having all elements common with first collection"
+    (is (= [] (difference [1 2 3] [2 3]))))
+  (testing "second collection having some elements common with first collection"
+    (is (= [4] (difference [1 2 3] [2 3 4]))))
+  (testing "second collection having no element common with first collection"
+    (is (= [4 5 6] (difference [1 2 3] [4 5 6])))))
