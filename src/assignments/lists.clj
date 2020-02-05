@@ -144,16 +144,17 @@
       (apply max-key (partial apply +) (map vector coll (next coll) (nnext coll))))
   )
 
-;; transpose is a def. Not a defn.
 (def
   ^{:level        :easy
     :dont-use     '[loop recur for nth get]
-    :implemented? false}
+    :implemented? true}
   transpose
   "Transposes a given matrix.
   [[a b] [c d]] => [[a c] [b d]].
   Note this is a def. Not a defn.
-  Return a vector of vectors, not list of vectors or vectors of lists")
+  Return a vector of vectors, not list of vectors or vectors of lists"
+  (partial apply map vector)
+  )
 
 (defn difference
   "Given two collections, returns only the elements that are present

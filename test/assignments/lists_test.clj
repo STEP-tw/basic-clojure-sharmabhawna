@@ -66,3 +66,9 @@
     (is (= [1 2] (max-three-digit-sequence [1 2]))))
   (testing "with more than three numbers"
     (is (= [2 -1 2] (max-three-digit-sequence [1 2 -1 2 0])))))
+
+(deftest transpose-test
+  (testing "with empty sequence"
+    (is (= [] (transpose [[] []]))))
+  (testing "with not-empty sequence"
+    (is (= [[1 2 3] [4 5 6]] (transpose [[1 4] [2 5] [3 6]])))))
