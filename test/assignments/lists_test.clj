@@ -46,3 +46,9 @@
     (is (true? (some?' odd? [2 3 4]))))
   (testing "no element satisfy the predicate"
     (is (false? (some?' odd? [2 4 6])))))
+
+(deftest ascending?-test
+  (testing "with correct sequence"
+    (is (true? (ascending? [1 2 3]))))
+  (testing "with incorrect sequence"
+    (is (false? (ascending? [1 4 3])))))
