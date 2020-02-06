@@ -135,3 +135,9 @@
     (is (= [1] (sqr-of-the-first [1]))))
   (testing "with collection containing 4 items"
     (is (= [4 4 4 4] (sqr-of-the-first [2 3 4 5])))))
+
+(deftest russian-dolls-test
+  (testing "single nesting gives result as same input"
+    (is (= [1 2 3] (russian-dolls [1 2 3] 1))))
+  (testing "triple nesting"
+    (is (= [[[1]] [[2]] [[3]]] (russian-dolls [1 2 3] 3)))))
