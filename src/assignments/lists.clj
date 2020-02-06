@@ -218,8 +218,8 @@
   [coll]
   (keep-indexed #(when
                    (or
-                     (= 0 (rem %1 3))
-                     (= 0 (rem %1 5)))
+                     (zero? (rem %1 3))
+                     (zero? (rem %1 5)))
                    %2) coll))
 
 (defn sqr-of-the-first
