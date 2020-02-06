@@ -141,3 +141,9 @@
     (is (= [1 2 3] (russian-dolls [1 2 3] 1))))
   (testing "triple nesting"
     (is (= [[[1]] [[2]] [[3]]] (russian-dolls [1 2 3] 3)))))
+
+(deftest split-comb-test
+  (testing "with even length sequence"
+    (is (= [1 3 2 4] (split-comb [1 2 3 4]))))
+  (testing "with odd length sequence"
+    (is (= [1 3 2 4 5] (split-comb [1 2 3 4 5])))))
