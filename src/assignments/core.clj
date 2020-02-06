@@ -115,9 +115,7 @@
         (l/union [1 2 3] [3 4 5])
         (l/union [1 2 3 1] [4 5 6 3 2 4])
         ;;
-        (l/points-around-origin)
-        ;;
-        (l/cross-product [1 2 3] [4 3 5]) ;
+        (l/cross-product [1 2 3] [4 3 5])
         ;;
         (l/double-up [1 2 3])
         (l/double-up ["I" "love" "clojure"])

@@ -92,3 +92,14 @@
     (is (= [1 2 3 4 5] (union [1 2 3] [3 4 5]))))
   (testing "with common element and elements repeat"
     (is (= [1 2 3 1 4 5 6 4] (union [1 2 3 1] [4 5 6 3 2 4])))))
+
+(deftest points-around-origin-test
+  (testing "points around origin"
+    (is (= '([-1 -1]
+             [-1 0]
+             [-1 1]
+             [0 -1]
+             [0 1]
+             [1 -1]
+             [1 0]
+             [1 1]) points-around-origin))))

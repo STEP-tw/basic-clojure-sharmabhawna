@@ -153,8 +153,7 @@
   [[a b] [c d]] => [[a c] [b d]].
   Note this is a def. Not a defn.
   Return a vector of vectors, not list of vectors or vectors of lists"
-  (partial apply map vector)
-  )
+  (partial apply map vector))
 
 (defn difference
   "Given two collections, returns only the elements that are present
@@ -177,16 +176,16 @@
   [coll1 coll2]
   (into coll1 (remove (set coll1) coll2)))
 
-;; points-around-origin is a def not a defn
 (def
   ^{:level        :easy
     :use          '[for]
     :dont-use     '[hardcoded-values map filter]
-    :implemented? false}
+    :implemented? true}
   points-around-origin
   "Calculate all the points around the origin
   [-1 -1] [0 -1] [1 -1] etc. There should be 8 points
-  Note this is a def, not a defn")
+  Note this is a def, not a defn"
+    (remove #{[0 0]} (for [x (range -1 2) y (range -1 2)] [x y])))
 
 (defn cross-product
   "Given two sequences, generate every combination in the sequence
