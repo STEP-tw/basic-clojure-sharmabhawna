@@ -129,3 +129,9 @@
     (is (= [1 4 6] (third-or-fifth [1 2 3 4 5 6]))))
   (testing "with collection containing last index as 6"
     (is (= [1 4 6 7] (third-or-fifth [1 2 3 4 5 6 7])))))
+
+(deftest sqr-of-the-first-test
+  (testing "with single item"
+    (is (= [1] (sqr-of-the-first [1]))))
+  (testing "with collection containing 4 items"
+    (is (= [4 4 4 4] (sqr-of-the-first [2 3 4 5])))))
