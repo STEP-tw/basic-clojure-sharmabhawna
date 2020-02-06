@@ -103,3 +103,10 @@
              [1 -1]
              [1 0]
              [1 1]) points-around-origin))))
+
+(deftest cross-product-test
+  (testing "with empty sequence"
+    (is (= [] (cross-product [] []))))
+  (testing "with 2 sequences"
+    (is (= [[1 4] [1 3] [1 5] [2 4] [2 3] [2 5] [3 4]]
+           (cross-product [1 2 3] [4 3 5])))))
