@@ -312,7 +312,6 @@
   (let [rows                  grid
         columns               (apply map vector rows)
         squares               (mapcat (partial apply map concat) (partition 3 (map (partial partition 3) rows)))
-        sequences             [rows columns squares]
-        nine-unique-elements? (fn [coll]
-                                (= 9 (count (set coll))))]
-    (every? (partial every? nine-unique-elements?) sequences)))
+        sequences             [rows columns squares]]
+    (letfn [(nine-unique-elements [coll] (= 9 (count (set coll))))]
+      (every? (partial every? nine-unique-elements) sequences))))
