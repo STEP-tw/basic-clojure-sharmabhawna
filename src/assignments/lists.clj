@@ -259,7 +259,7 @@
    :implemented? true}
   [coll]
   (let [size        (count coll)
-        interleaved (apply interleave (split-at (quot (count coll) 2) coll))]
+        interleaved (apply interleave (split-at (quot size 2) coll))]
     (if (even? size)
         interleaved
         (concat interleaved (take-last 1 coll))
