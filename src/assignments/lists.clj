@@ -280,8 +280,13 @@
   {:level        :easy
    :use          '[empty? loop recur butlast rest]
    :dont-use     '[reverse]
-   :implemented? false}
-  [coll])
+   :implemented? true}
+  [coll]
+  (loop [is-palindrome true
+         col           coll]
+    (if (empty? col)
+        is-palindrome
+        (recur (and is-palindrome (= (first col) (last col))) (rest (butlast col))))))
 
 (defn index-of
   "index-of takes a sequence and an element and finds the index

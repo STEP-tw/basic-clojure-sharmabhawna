@@ -147,3 +147,13 @@
     (is (= [1 3 2 4] (split-comb [1 2 3 4]))))
   (testing "with odd length sequence"
     (is (= [1 3 2 4 5] (split-comb [1 2 3 4 5])))))
+
+(deftest palindrome?-test
+  (testing "with empty collection"
+    (is (true? (palindrome? []))))
+  (testing "with palindrome list"
+    (is (true? (palindrome? [1 2 1]))))
+  (testing "with palindrome string"
+    (is (true? (palindrome? "NaN"))))
+  (testing "with not a palindrome collection"
+    (is (false? (palindrome? [1 2 3])))))
