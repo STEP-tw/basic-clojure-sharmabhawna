@@ -148,6 +148,17 @@
   (testing "with odd length sequence"
     (is (= [1 3 2 4 5] (split-comb [1 2 3 4 5])))))
 
+(deftest muted-thirds-test
+  (testing "with empty,1 and 2 elements in collection"
+    (are [x y] (= x y)
+               [] (muted-thirds [])
+               [1] (muted-thirds [1])
+               [1 2] (muted-thirds [1 2])))
+  (testing "with more than 2 elements in collection"
+    (are [x y] (= x y)
+               [1 2 0] (muted-thirds [1 2 3])
+               [1 2 0 4 15 0 7] (muted-thirds [1 2 8 4 15 2 7]))))
+
 (deftest palindrome?-test
   (testing "with empty collection"
     (is (true? (palindrome? []))))
