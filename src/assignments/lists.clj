@@ -295,7 +295,7 @@
   {:level        :easy
    :use          '[loop recur rest]
    :dont-use     '[.indexOf memfn]
-   :implemented? false}
+   :implemented? true}
   [coll num]
   (loop [index 0
          col coll]
@@ -307,5 +307,12 @@
 (defn validate-sudoku-grid
   "Given a 9 by 9 sudoku grid, validate it."
   {:level        :hard
-   :implemented? false}
-  [grid])
+   :implemented? true}
+  [grid]
+  (let [rows                  grid
+        columns               (apply map vector rows)
+        squares               (mapcat (partial apply map concat) (partition 3 (map (partial partition 3) rows)))
+        sequences             [rows columns squares]
+        nine-unique-elements? (fn [coll]
+                                (= 9 (count (set coll))))]
+    (every? (partial every? nine-unique-elements?) sequences)))
