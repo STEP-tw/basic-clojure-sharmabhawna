@@ -157,3 +157,11 @@
     (is (true? (palindrome? "NaN"))))
   (testing "with not a palindrome collection"
     (is (false? (palindrome? [1 2 3])))))
+
+(deftest index-of-test
+  (testing "with empty collection"
+    (is (= -1 (index-of [] "something"))))
+  (testing "with element present in the collection"
+    (is (= 4 (index-of [0 1 2 5 3] 3))))
+  (testing "with element not present in the collection"
+    (is (= -1 (index-of [1 2 3] 0)))))
